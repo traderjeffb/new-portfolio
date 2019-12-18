@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/site.js"></script>
+  </head>
+
+  <title>Portfolio</title>
+  <div class="main_page">
+    <body>
+      <nav class="nav-bar">
+        <ul>
+          <li class="list-item"><a href="index.html">Home</a></li>
+          <li class="list-item" onclick="displayPortfolio()">
+            <a href="###">Portfolio</a>
+          </li>
+          <li class="list-item">Contact Info</li>
+          <li class="list-item"><a href="/About.html">About</a></li>
+        </ul>
+      </nav>
+      <!-- ================================ -->
+
+      <div class="portfolio-container" id="portfolio-container">
+        <div class="portfolio1">portfolio1</div>
+        <div class="portfolio2" id="notes2" onmouseover="makeAppear(this);">
+          portfolio2
+        </div>
+        <div class="portfolio3" id="notes3">portfolio3</div>
+      </div>
+
+      <!-- notes on portfolio -->
+      <div class="notes-parent">
+        <div class="notes1">
+          this portfolio used CSS and html and hello world this portfolio used
+          CSS and html and hello world this portfolio used CSS and html and
+          hello world this portfolio used CSS and html and hello world
+        </div>
+      </div>
+
+      <script>
+        function displayPortfolio() {
+          document.getElementById("portfolio-container").style.visibility =
+            "visible";
+        }
+      </script>
+
+      <!-- <script>
+        document.getElementById("notes3").onmouseover = function(evt) {
+          alert(evt.target.id);
+        };
+      </script> -->
+
+      <script>
+        function makeAppear(){
+          var id = ele.id;
+          console.log('area element id = ' + id);
+        }
+
+        $(document).ready(function (){}
+          $("ele").hover(function() {
+            $(".notes1").css("visibility", "visible");
+          });
+          $(".portfolio1").mouseleave(function() {
+            $(".notes1").css("visibility", "hidden");
+          });
+        });
+      </script>
+    </body>
+  </div>
+</html>
+
+<!-- <script>
+  $(document).ready(function() {
+    $(".portfolio1").hover(function() {
+      $(".notes1").css("visibility", "visible");
+    });
+    $(".portfolio1").mouseleave(function() {
+      $(".notes1").css("visibility", "hidden");
+    });
+  });
+</script> -->
