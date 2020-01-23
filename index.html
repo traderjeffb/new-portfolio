@@ -10,76 +10,71 @@
   </head>
 
   <title>Portfolio</title>
-  <div class="main_page">
+
     <body>
       <nav class="nav-bar">
         <ul>
-          <li class="list-item"><a href="index.html">Home</a></li>
+          <!-- <li class="list-item"><a href="index.html">Home</a></li> -->
           <li class="list-item" onclick="displayPortfolio()">
             <a href="###">Portfolio</a>
           </li>
-          <li class="list-item">Contact Info</li>
-          <li class="list-item"><a href="/About.html">About</a></li>
+          <li class="list-item" onclick="displayContact()">
+            <a href="###">Contact</li>
+          <!-- <li class="list-item"><a href="/About.html">About</a></li> -->
         </ul>
       </nav>
       <!-- ================================ -->
-
+      <div class="main_page">
       <div class="portfolio-container" id="portfolio-container">
-        <div class="portfolio1">portfolio1</div>
-        <div class="portfolio2" id="notes2" onmouseover="makeAppear(this);">
-          portfolio2
-        </div>
-        <div class="portfolio3" id="notes3">portfolio3</div>
-      </div>
 
-      <!-- notes on portfolio -->
-      <div class="notes-parent">
-        <div class="notes1">
-          this portfolio used CSS and html and hello world this portfolio used
-          CSS and html and hello world this portfolio used CSS and html and
-          hello world this portfolio used CSS and html and hello world
+        <div class="portfolio1">
+          portfolio1
+          <div class="notes1" id="notes1">
+            this portfolio used CSS and html and hello world this portfolio used
+            CSS and html and hello world this portfolio used CSS and html and
+            hello world this portfolio used CSS and html and hello world
+          </div>
+        </div>
+        <div class="portfolio2" id="notes2">
+          portfolio2
+          <div class="notes2" id="notes2">
+            this portfolio used hello world this portfolio used CSS and html and
+            hello world
+          </div>
+        </div>
+        <div class="portfolio3" id="notes3">
+          portfolio3
+          <div class="notes3" id="notes3">
+            this portfolio used CSS and html and hello world this portfolio used
+            CSS and html and hello world d html and hello world
+          </div>
         </div>
       </div>
+      <div class="info-container" id="info-container">
+        <div class="details" id="details">
+          Jeff Beeson<br>
+          1816 S. O'Hare Blvd<br>
+          Yorktown, IN 47396<br>
+          765-228-1104
+        </div>
+      </div>
+  </div>
+
 
       <script>
         function displayPortfolio() {
-          document.getElementById("portfolio-container").style.visibility =
-            "visible";
-        }
+          document.getElementById("info-container").style.visibility = "hidden"
+          document.getElementById("details").style.visibility = "hidden"
+          document.getElementById("portfolio-container").style.visibility ="visible";
+      }
       </script>
-
-      <!-- <script>
-        document.getElementById("notes3").onmouseover = function(evt) {
-          alert(evt.target.id);
-        };
-      </script> -->
-
       <script>
-        function makeAppear(){
-          var id = ele.id;
-          console.log('area element id = ' + id);
+        function displayContact() {
+          document.getElementById("portfolio-container").style.visibility ="hidden"
+          document.getElementById("info-container").style.visibility = "visible"
+          document.getElementById("details").style.visibility = "visible";
         }
-
-        $(document).ready(function (){}
-          $("ele").hover(function() {
-            $(".notes1").css("visibility", "visible");
-          });
-          $(".portfolio1").mouseleave(function() {
-            $(".notes1").css("visibility", "hidden");
-          });
-        });
       </script>
     </body>
   </div>
 </html>
-
-<!-- <script>
-  $(document).ready(function() {
-    $(".portfolio1").hover(function() {
-      $(".notes1").css("visibility", "visible");
-    });
-    $(".portfolio1").mouseleave(function() {
-      $(".notes1").css("visibility", "hidden");
-    });
-  });
-</script> -->
