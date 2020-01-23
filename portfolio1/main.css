@@ -15,7 +15,9 @@
   grid-template-columns: 250px 1fr;
   grid-gap: 20px;
 }
-
+#box1 a {
+  text-decoration: none;
+}
 .box1 {
   grid-area: header;
   grid-row-start: 1;
@@ -43,6 +45,10 @@
   grid-column-start: 2;
   grid-column-end: -1;
   background-color: rgb(247, 250, 230);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  vertical-align: middle;
 }
 
 .box4 {
@@ -67,4 +73,16 @@
       "footer footer";
     justify-content: center;
   }
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(180, 180, 180);
 }
