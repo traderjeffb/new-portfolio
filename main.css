@@ -189,9 +189,6 @@ div.main_page {
   flex-direction: column;
   justify-content: space-around;
 }
-/* #details {
-  visibility: hidden;
-} */
 .details {
   position: relative;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -201,4 +198,15 @@ div.main_page {
   font-size: 2.3rem;
   padding-bottom: 300px;
   z-index: 5;
+}
+.fade-in {
+  animation: fadeIn ease 5s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
