@@ -18,4 +18,3 @@ async function getQuote() {
   let data = await response.json();
   console.log(data);
 }
-// remove this line
