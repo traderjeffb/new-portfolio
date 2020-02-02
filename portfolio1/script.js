@@ -3,7 +3,7 @@ var notCleanInput;
 var input;
 var api =
   "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=";
-var apiKey = "&apikey=VBVT9P94JCTSHO29"; //'VBVT9P94JCTSHO29'
+var apiKey = "&apikey=VBVT9P94JCTSHO29&datatype=csv"; //'VBVT9P94JCTSHO29'
 var url = api + input + apiKey;
 
 function selectText() {
@@ -14,8 +14,8 @@ function selectText() {
 
 async function getQuote() {
   let response = await fetch(url);
-  let data = await response.json();
+  let data = await response.text();
   console.log(data);
-  console.log(data.symbol); //trying to manipulate the meta data
+  //trying to manipulate the meta data
   //console.log(data.symbol);
 }
