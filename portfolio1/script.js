@@ -11,12 +11,24 @@ function selectText() {
   input = notCleanInput.replace(/\s+/g, "");
   url = api + input + apiKey;
 }
-
+// -----------------------------------
 async function getQuote() {
-  let response = await fetch(url);
-  let data = await response.text();
-  console.log(data);
-  //trying to manipulate the meta data
-  //console.log(data.symbol);
+  const xs = [];
+  const ys = [];
+
+  const response = await fetch(url);
+  const data = await response.text();
+
+  const table = data.split("\n").slice(1);
+  table.forEach(row => {
+    const columns = row.split(",");
+    const timestamp = columns[0];
+    xs.push(timestamp);
+    const last = columns[4];
+    ys.push(last);
+    console.log(timestamp, last);
+  });
+  return { xs, ys };
 }
-// --------------------------------------------
+
+// ---------all good above--------------
