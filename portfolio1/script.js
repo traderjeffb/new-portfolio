@@ -19,3 +19,4 @@ async function getQuote() {
   //trying to manipulate the meta data
   //console.log(data.symbol);
 }
+// --------------------------------------------

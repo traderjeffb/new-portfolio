@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="/portfolio1/main.css" />
     <script src="/portfolio1/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
@@ -30,6 +31,32 @@
           <br>
           <button id="submit" onclick = "getQuote() ; selectText()">Submit</button>
         </p>
+        <!-- //--------------------------------------- -->
+        <canvas id="myChart"></canvas>
+        <script>
+        var ctx = document.getElementById("myChart").getContext("2d");
+        var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: "line",
+
+          // The data for our dataset
+          data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+              {
+                label: "My First dataset",
+                backgroundColor: "rgb(255, 99, 132)",
+                borderColor: "rgb(255, 99, 132)",
+                data: [0, 10, 5, 2, 20, 30, 45]
+              }
+            ]
+          },
+
+          // Configuration options go here
+          options: {}
+        });
+        </script>
+        <!-- //--------------------------------------- -->
       </div>
       <div class="grid_item box4">this is box four</div>
     </div>
