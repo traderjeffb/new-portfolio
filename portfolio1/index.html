@@ -20,22 +20,26 @@
         <a href="/index.html">BACK</a>
       </div>
       <div class="grid_item box2">
+        <p>
+          Stock:<input type="text" id="ticker" ></input>
+          <br>
+          <button id="submit" onclick = "chartIt() ; selectText()">Submit</button>
+        </p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente odit
         blanditiis architecto autem quaerat nemo pariatur quis ducimus
         cupiditate officia id quia unde at neque nostrum voluptatem
         consequuntur, voluptates inventore?
       </div>
       <div class="grid_item box3">
-        <p>
+        <!-- <p>
           Stock:<input type="text" id="ticker" ></input>
           <br>
           <button id="submit" onclick = "chartIt() ; selectText()">Submit</button>
-        </p>
-        <!-- //--------------------------------------- -->
-        <div class = "chartContainer">
+        </p> -->
+        <!-- <div class = "chartContainer">
           <canvas id="myChart"class="myChart"></canvas>
-        </div>
-       
+        </div> -->
+        <canvas id="myChart"class="myChart"></canvas>
         <script>
         chartIt();        
 
@@ -45,13 +49,12 @@
           const myChart = new Chart(ctx, {
             // The type of chart we want to create
             type: "line",
-
             // The data for our dataset
             data: {
               labels: data.xs,
               datasets: [
                 {
-                  label: "Price Chart",
+                  label: input + "  Price Chart",
                   data: data.ys,
                   fill:false,
                   backgroundColor: "rgb(255, 99, 132)",
@@ -62,7 +65,7 @@
             },
 
           // Configuration options go here
-          options: {}
+          options: { }
         });
         }  
         </script>

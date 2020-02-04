@@ -20,12 +20,15 @@ async function getQuote() {
   const data = await response.text();
 
   const table = data.split("\n").slice(1);
+
   table.forEach(row => {
     const columns = row.split(",");
     const timestamp = columns[0];
+    table.reverse();
     xs.push(timestamp);
     const last = columns[4];
     ys.push(last);
+    console.log(input);
     console.log(timestamp, last);
   });
   return { xs, ys };
