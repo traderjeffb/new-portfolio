@@ -6,6 +6,8 @@
 .grid_container {
   display: grid;
   width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
   grid-template-areas:
     "header header"
     "sidebar sidebar"
