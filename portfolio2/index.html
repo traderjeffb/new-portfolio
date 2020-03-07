@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
+    <script>src= "https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"</script>
+
   </head>
   <body>
     <div class="box">
@@ -14,8 +17,44 @@
         <label for="lname">Last name:</label><br>
         <input type="text" id="lname" name="lname">
         <br>
-        <input type="button" onclick="">
+      
+        <button onclick= "function setValues()">Continue</button>
       </form>
     <div class="second"></div>
+    
+
   </body>
+
+  <script>
+
+      const firstName = document.getElementById("fname");
+      const lastName = document.getElementById("lname");
+      
+      let myObj ={
+        fname:'',
+        lname: ''
+      };
+
+      // var person = new Object();
+      //   person.firstName = document.getElementById("fname");
+      //   person.lastName = document.getElementById("lname");
+     
+       sessionStorage.setItem('fname', JSON.stringify(this.fname));
+       myObj.lname=lastName;
+     
+      let myObj_serialized = JSON.stringify(myObj);
+
+      localStorage.setItem('myObj', myObj_serialized);
+
+      let myObj_deserialized = JSON.parse(localStorage.getItem("myObj"));
+
+      console.log(myObj_deserialized);
+      console.log(sessionStorage.getItem('myObj'));
+      console.log('person');
+
+      // const first = document.getElementbyId ("fname");
+      // localStorage.setItem('last', lname);
+      // console.log(localStorage.getItem('first'));
+   
+  </script>
 </html>
