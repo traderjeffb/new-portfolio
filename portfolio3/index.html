@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Putting User Input into JS Objects</title>
+    <style>
+      .formBox {
+        padding: 0.5rem 2rem;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- this is a test which may or may not be in the final portfolio -->
+    <form id="#MyForm">
+      <div class="formBox">
+        <label for="title">game</label>
+        <input type="text" id="title" placeholder="Title" />
+      </div>
+      <div class="formBox">
+        <label for="yr">Year</label>
+        <input type="number" id="yr" placeholder="Year" />
+      </div>
+      <div class="formBox">
+        <button id="btn">Click to Add</button>
+      </div>
+      <div class="formBox">
+        <button id="end">Click to END</button>
+
+        <div id="seconds-counter"></div>
+      </div>
+      <div id="msg">
+        <pre></pre>
+      </div>
+      <p id="demo2"></p>
+      <p id="demo"></p>
+    </form>
+
+    <script>
+      let games = [];
+      // example of array above { game: 'lucky day', year: 2015}
+      const addgame = ev => {
+        ev.preventDefault(); //to stop the form submitting
+        let game = {
+          title: document.getElementById("title").value,
+          year: document.getElementById("yr").value
+        };
+        games.push(game);
+
+        // display in console----------------------------
+        console.warn("added", { games });
+        let pre = document.querySelector("#msg pre");
+        pre.textContent = "\n" + JSON.stringify(games, "\t", 2);
+
+        //saving to localStorage-----------------------------------
+        localStorage.setItem("MygameList", JSON.stringify(games));
+      };
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("btn").addEventListener("click", addgame);
+        document.getElementById("btn").addEventListener("click", setTitleYear); //---
+        document.getElementById("btn").addEventListener("click", timeFunction); //---
+        document.getElementById("end").addEventListener("click", timeFunction);
+        document.getElementById("end").addEventListener("click", clearAll);
+      });
+      //--------------------------------------------------------------------------------------
+      var seconds = 0;
+      var delayRequiredBetweenSerialAllocations = 15;
+      var secondsSinceLastAllocation = seconds;
+      var howLongToDelayCurrentAllocation =
+        delayRequiredBetweenSerialAllocations - secondsSinceLastAllocation; //use this to set how many total seconds to delay the program-and if a delay is needed
+
+      function timeFunction() {
+        const button = document.getElementById("btn");
+        button.disabled = true;
+        var seconds = 0; //initializing the count to zero
+        var el = document.getElementById("seconds-counter");
+
+        function incrementSeconds() {
+          seconds += 1;
+          el.innerText =
+            "Processing Infomation For Serial Number(s)" +
+            "\r\n" +
+            "You have been waiting for " +
+            seconds +
+            " seconds." +
+            "\r\n" +
+            "A new Serial Allocation will be possible in " +
+            (howLongToDelayCurrentAllocation - seconds) +
+            " seconds." +
+            "\r\n" +
+            "This Could Take Up to " +
+            howLongToDelayCurrentAllocation +
+            " Seconds";
+          if (seconds >= howLongToDelayCurrentAllocation) {
+            stopInterval();
+          } else {
+            console.log(
+              howLongToDelayCurrentAllocation -
+                seconds +
+                " seconds before a new allocation allowed"
+            );
+          }
+        }
+        if (
+          howLongToDelayCurrentAllocation !==
+          delayRequiredBetweenSerialAllocations
+        ) {
+          console.log(
+            howLongToDelayCurrentAllocation + "howLongToDelayCurrentAllocation"
+          );
+        }
+
+        var cancel = setInterval(incrementSeconds, 1000);
+
+        function stopInterval() {
+          clearInterval(cancel);
+          el.innerText = "";
+          delayRequiredBetweenSerialAllocations =
+            delayRequiredBetweenSerialAllocations - secondsSinceLastAllocation;
+          button.disabled = false;
+          console.log(
+            (delayRequiredBetweenSerialAllocations =
+              howLongToDelayCurrentAllocation -
+              seconds +
+              "delay required before next allocation")
+          );
+        }
+      }
+      //-------------------------------------------------------------------------------------------------
+      function clearAll() {
+        document.forms[0].reset(); // to clear the form for the next entries-------------------------
+        document.querySelector("form").reset();
+        localStorage.clear();
+      }
+
+      function setTitleYear() {
+        var selectText = document.getElementById("title").value;
+        var selectText2 = document.getElementById("yr").value;
+        localStorage.setItem("title", selectText);
+        localStorage.setItem("yr", selectText2);
+        // document.getElementById("title2").innerHTML = localStorage.getItem(
+        //   "title"
+        // );
+      }
+
+      for (var i = 0; i < localStorage.length; i++) {
+        //console.log(localStorage.getItem(localStorage.key(i)));
+        var text = localStorage.getItem(localStorage.key(i));
+        var text2 = localStorage.getItem(localStorage.key(0));
+      }
+
+      //var KeyName = window.localStorage.key(title);
+      document.getElementById("demo2").innerHTML = text2; //-----setting print out below
+      document.getElementById("demo").innerHTML = text;
+
+      //filling in data if loss of window
+      document.getElementById("yr").value = text; //---------<<<----- setting the input field
+      document.getElementById("title").value = text2; //-----<<<<<----setting the input field
+    </script>
+  </body>
+</html>
